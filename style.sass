@@ -1,0 +1,167 @@
+
+$font: 'Open Sans', sans-serif
+$color-theme: #f7f1e3
+
+*
+  margin: 0px
+  padding: 0px
+  box-sizing: border-box
+  font-family: $font 
+
+
+#main-app
+  height: 100vh
+  width: 100%
+  overflow: hidden
+  
+  #site-title
+    width: 100%
+    height: 10vh
+    background-color: black
+    display: flex 
+    align-items: center
+    padding-left: 10%
+
+    h1 
+      color: $color-theme
+
+  $form-width: 750px
+  $search-width: 0.8*$form-width
+  $padding: 0.1*$form-width
+  $main-bdr-rad: 5px
+
+  #search-modal 
+    height: 70vh
+    display: flex 
+    justify-content: center 
+    align-items: center 
+  
+  
+    #search-form
+      min-height: 350px
+      width: $form-width
+      min-width: 500px
+      background-color: $color-theme
+      display: flex 
+      flex-direction: column
+      justify-content: center 
+      align-items: center 
+      border-radius: $main-bdr-rad
+
+      #sort
+        margin: 10px 0
+        width: 100%
+        text-align: left
+        padding-left: $padding
+        
+        input.sort
+          cursor: pointer
+
+        label.sort-title
+          font-weight: normal
+          font-size: 19px
+          margin-right: 5px
+          
+        label.sort-radio 
+          font-weight: normal
+          font-size: 16px
+          margin-left: 5px
+          margin-right: 5px
+
+
+      #form-title
+        display: block
+        width: 100%
+        text-align: left
+        padding-left: $padding
+        h2
+          font-size: 25px
+          margin-bottom: 10px
+
+
+      .limit.label 
+        width: 100%
+        text-align: left
+        padding-left: $padding
+        font-size: 20px
+        margin-bottom: 10px
+        font-weight: bold    
+
+
+      .search-input
+        width: $search-width
+        border-radius: $main-bdr-rad
+        height: 36px
+        margin-bottom: 10px
+        cursor: text
+
+      .drop-down
+        width: $search-width
+        border-radius: $main-bdr-rad
+        height: 36px
+        cursor: pointer
+
+      .search-btn
+        width: $search-width
+
+
+  #errors
+    display: none
+    height: 10vh
+    width: 100%
+
+    &.alert-messages
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-direction: column 
+      background-color: $color-theme
+
+    .error-message
+      color: red
+
+
+  // keep footer always at 5vh from the bottom of the page
+  #footer
+    width: 100%
+    position: fixed
+    bottom: 5vh
+    text-align: center
+    font-size: 12px
+    opacity: 0.6
+
+
+  .btn 
+    height: 37px
+    width: 100px
+    margin-top: 20px
+    border-radius: $main-bdr-rad
+    border: black 2px solid 
+    cursor: pointer
+    background-color: black
+    color: white
+    transition: all 150ms ease-in-out
+
+    &:hover
+      background-color: #487eb0
+      border: #487eb0 2px solid 
+
+/* Animations */
+
+
+
+
+
+/* Responsive Design */
+
+@media screen and (max-width: 900px)
+  // remove title margin
+  #main-app #site-title
+    padding-left: 0px 
+    justify-content: center
+
+  // center title and resize
+  #main-app #site-title h1 
+    font-size: 25px
+
+  

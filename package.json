@@ -1,0 +1,11 @@
+{
+  "name": "redditsearchapp",
+  "version": "1.0.0",
+  "description": "Reddit Search Web App",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kranti Nebhwani",
+  "license": "ISC"
+}

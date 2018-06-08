@@ -1,0 +1,122 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif; }
+
+#main-app {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden; }
+  #main-app #site-title {
+    width: 100%;
+    height: 10vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    padding-left: 10%; }
+    #main-app #site-title h1 {
+      color: #f7f1e3; }
+  #main-app #search-modal {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    #main-app #search-modal #search-form {
+      min-height: 350px;
+      width: 750px;
+      min-width: 500px;
+      background-color: #f7f1e3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px; }
+      #main-app #search-modal #search-form #sort {
+        margin: 10px 0;
+        width: 100%;
+        text-align: left;
+        padding-left: 75px; }
+        #main-app #search-modal #search-form #sort input.sort {
+          cursor: pointer; }
+        #main-app #search-modal #search-form #sort label.sort-title {
+          font-weight: normal;
+          font-size: 19px;
+          margin-right: 5px; }
+        #main-app #search-modal #search-form #sort label.sort-radio {
+          font-weight: normal;
+          font-size: 16px;
+          margin-left: 5px;
+          margin-right: 5px; }
+      #main-app #search-modal #search-form #form-title {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding-left: 75px; }
+        #main-app #search-modal #search-form #form-title h2 {
+          font-size: 25px;
+          margin-bottom: 10px; }
+      #main-app #search-modal #search-form .limit.label {
+        width: 100%;
+        text-align: left;
+        padding-left: 75px;
+        font-size: 20px;
+        margin-bottom: 10px;
+        font-weight: bold; }
+      #main-app #search-modal #search-form .search-input {
+        width: 600px;
+        border-radius: 5px;
+        height: 36px;
+        margin-bottom: 10px;
+        cursor: text; }
+      #main-app #search-modal #search-form .drop-down {
+        width: 600px;
+        border-radius: 5px;
+        height: 36px;
+        cursor: pointer; }
+      #main-app #search-modal #search-form .search-btn {
+        width: 600px; }
+  #main-app #errors {
+    display: none;
+    height: 10vh;
+    width: 100%; }
+    #main-app #errors.alert-messages {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background-color: #f7f1e3; }
+    #main-app #errors .error-message {
+      color: red; }
+  #main-app #footer {
+    width: 100%;
+    position: fixed;
+    bottom: 5vh;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.6; }
+  #main-app .btn {
+    height: 37px;
+    width: 100px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: black 2px solid;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    transition: all 150ms ease-in-out; }
+    #main-app .btn:hover {
+      background-color: #487eb0;
+      border: #487eb0 2px solid; }
+
+/* Animations */
+/* Responsive Design */
+@media screen and (max-width: 900px) {
+  #main-app #site-title {
+    padding-left: 0px;
+    justify-content: center; }
+
+  #main-app #site-title h1 {
+    font-size: 25px; } }
+
+/*# sourceMappingURL=style.css.map */

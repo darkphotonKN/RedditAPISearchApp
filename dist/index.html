@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reddit Search</title>
+    <link href="/style.11daa263.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet">
+
+<script src="/style.11daa263.js"></script></head>
+
+<body>
+    <!-- Single Page Bookmarker Web Application -->
+    <div id="main-app">
+        <div id="site-title">
+            <h1>Reddit Search</h1> 
+        </div>
+
+        <div id="search-modal">
+
+            <form id="search-form">
+
+                <div id="form-title">
+                    <h2>Make your search.</h2>
+                </div>
+                <input type="text" class="search-input" placeholder=" Search Term..">
+                
+                <div id="sort">
+                    <label class="sort-title">Sort By:</label>
+                    <input class="sort" type="radio" value="new"><label class="sort-radio">Relevance</label>
+                    <input class="sort" type="radio" value="new"><label class="sort-radio">Latest</label>
+                </div>
+
+                <label class="limit label">Limit</label>
+                <select id="limit" class="drop-down">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+                <button type="submit" class="search-btn btn">Search</button>
+
+            </form>
+
+            
+
+        </div>
+
+        <div id="errors">Error</div>
+
+        <div id="result"></div>
+
+        
+
+
+        <div id="footer">&copy; Reddit Search 2018</div>
+    </div>
+
+    <script type="text/javascript" src="/script.449b06ed.js"></script>
+</body>
+
+
+
+</html>
