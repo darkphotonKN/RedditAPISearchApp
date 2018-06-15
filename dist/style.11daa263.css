@@ -68,7 +68,8 @@
         border-radius: 5px;
         height: 36px;
         margin-bottom: 10px;
-        cursor: text; }
+        cursor: text;
+        padding: 0 0.4em; }
       #main-app #search-modal #search-form .drop-down {
         width: 600px;
         border-radius: 5px;

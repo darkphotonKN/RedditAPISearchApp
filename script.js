@@ -6,7 +6,7 @@ const searchInput = document.querySelector('.search-input');
 
 // 'submit' - if form is submitted, perform callback 
 searchForm.addEventListener('submit', (e) => {
-    // get search term 
+    // get search term g
     const searchTerm = searchInput.value;
     // get radio check boxes
     const sortBy = document.querySelector('input[class="sort"]:checked').value;
@@ -21,11 +21,13 @@ searchForm.addEventListener('submit', (e) => {
 
     // clear search input
     searchInput.value = "";
-
-    // search Reddit using Reddit API, separate JS file
-    reddit.search(searchTerm, searchLimit, sortBy);
-    
     e.preventDefault();
+    // search Reddit using Reddit API, separate JS file
+    // returns a promise (code in written in redditapi.js) so use .then() to get the data
+    reddit.search(searchTerm, searchLimit, sortBy).then(res => console.log(res));
+    
+
+
 
     // testing
     // console.log();

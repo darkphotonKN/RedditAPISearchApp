@@ -23,9 +23,10 @@ service workers).
 export default {
     
     search: function(searchTerm, searchLimit, sortBy) {
-        fetch(`http://www.reddit.com/search.json?q=${searchTerm}`) // ? - allows use url para parameter, q - query
+        return fetch(`http://www.reddit.com/search.json?q=${searchTerm}&sort=${sortBy}&limit=${searchLimit}`) // ? - allows use url para parameter, q - query
         .then(res => res.json()) // it gives us the response, we want the response in JSON
-        .then(data => console.log(data)); // gives us the data
+        .then(data => data.data.children.map(data => data.data)) // gives us the data
+        .catch(err => console.log(err)); 
     }
 
     // solutions of problem  

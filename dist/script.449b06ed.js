@@ -98,7 +98,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({21:[function(require,module,exports) {
+})({7:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -129,15 +129,23 @@ service workers).
 exports.default = {
 
     search: function search(searchTerm, searchLimit, sortBy) {
-        fetch("http://www.reddit.com/search.json?q=" + searchTerm) // ? - allows use url para parameter, q - query
+        return fetch("http://www.reddit.com/search.json?q=" + searchTerm + "&sort=" + sortBy + "&limit=" + searchLimit) // ? - allows use url para parameter, q - query
         .then(function (res) {
             return res.json();
         }) // it gives us the response, we want the response in JSON
         .then(function (data) {
-            return console.log(data);
-        }); // gives us the data
+            return data.data.children.map(function (data) {
+                return data.data;
+            });
+        }) // gives us the data
+        .catch(function (err) {
+            return console.log(err);
+        });
     }
+
     // solutions of problem  
+
+
 };
 },{}],3:[function(require,module,exports) {
 'use strict';
@@ -154,7 +162,7 @@ var searchInput = document.querySelector('.search-input');
 
 // 'submit' - if form is submitted, perform callback 
 searchForm.addEventListener('submit', function (e) {
-    // get search term 
+    // get search term g
     var searchTerm = searchInput.value;
     // get radio check boxes
     var sortBy = document.querySelector('input[class="sort"]:checked').value;
@@ -169,11 +177,12 @@ searchForm.addEventListener('submit', function (e) {
 
     // clear search input
     searchInput.value = "";
-
-    // search Reddit using Reddit API, separate JS file
-    _redditapi2.default.search(searchTerm, searchLimit, sortBy);
-
     e.preventDefault();
+    // search Reddit using Reddit API, separate JS file
+    // returns a promise (code in written in redditapi.js) so use .then() to get the data
+    _redditapi2.default.search(searchTerm, searchLimit, sortBy).then(function (res) {
+        return console.log(res);
+    });
 
     // testing
     // console.log();
@@ -198,7 +207,7 @@ function showMessage(message, className) {
     errorOutput.appendChild(div);
     errorOutput.classList.add(className);
 }
-},{"./redditapi":21}],22:[function(require,module,exports) {
+},{"./redditapi":7}],13:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -227,7 +236,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '58576' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49159' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -368,5 +377,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[22,3], null)
+},{}]},{},[13,3], null)
 //# sourceMappingURL=/script.449b06ed.map
