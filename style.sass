@@ -1,6 +1,7 @@
 
 $font: 'Open Sans', sans-serif
 $color-theme: #f7f1e3
+$main-border: #aaa69d 1px solid
 
 *
   margin: 0px
@@ -36,7 +37,6 @@ $color-theme: #f7f1e3
     justify-content: center 
     align-items: center
   
-  
     #search-form
       min-height: 350px
       width: $form-width
@@ -47,6 +47,7 @@ $color-theme: #f7f1e3
       justify-content: center
       align-items: center
       border-radius: $main-bdr-rad
+      border: $main-border
 
       #sort
         margin: 10px 0
@@ -68,7 +69,6 @@ $color-theme: #f7f1e3
           margin-left: 5px
           margin-right: 5px
 
-
       #form-title
         display: block
         width: 100%
@@ -78,7 +78,6 @@ $color-theme: #f7f1e3
           font-size: 25px
           margin-bottom: 10px
 
-
       .limit.label 
         width: 100%
         text-align: left
@@ -86,7 +85,6 @@ $color-theme: #f7f1e3
         font-size: 20px
         margin-bottom: 10px
         font-weight: bold    
-
 
       .search-input
         width: $search-width
@@ -105,11 +103,50 @@ $color-theme: #f7f1e3
       .search-btn
         width: $search-width
 
+  #result 
+    width: 100%
+    min-height: 200px
+    position: absolute
+    top: 70vh
+    display: flex
+    align-items: center 
+    justify-content: center
+    flex-wrap: wrap
+
+    &.show 
+      border: #aaa69d 3px solid 
+      
+    
+    .result-wrap
+      display: inline-block
+      animation: res-output 700ms ease-in forwards // animate results onto UI
+      
+      .title
+        font-size: 15px
+        width: 200px
+        font-weight: bold
+        margin-left: auto
+        margin-right: auto
+        text-align: center
+      
+      .output
+        margin: 3px 50px
+        font-size: 15px
+        min-height: 80px
+        width: 200px
+        background-color: $color-theme
+        border-radius: 4px
+        padding: 0.4em 0.4em
+             
+
+
 
   #errors
     display: none
     height: 10vh
     width: 100%
+    z-index: 2
+    
 
     &.alert-messages
       display: flex
@@ -117,6 +154,7 @@ $color-theme: #f7f1e3
       justify-content: center
       flex-direction: column 
       background-color: $color-theme
+
 
     .error-message
       color: red
@@ -149,7 +187,11 @@ $color-theme: #f7f1e3
 
 /* Animations */
 
-
+@keyframes res-output
+  0%
+    transform: translateX(-1000px)
+  100%
+    transform: translateX(0px)
 
 
 

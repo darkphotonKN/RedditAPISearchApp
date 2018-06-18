@@ -98,7 +98,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({7:[function(require,module,exports) {
+})({4:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -159,10 +159,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var searchForm = document.getElementById('search-form'); // js file using reddit api
 
 var searchInput = document.querySelector('.search-input');
+// error status 
+var errorStatus = false;
 
 // 'submit' - if form is submitted, perform callback 
 searchForm.addEventListener('submit', function (e) {
-    // get search term g
+
+    // get search term
     var searchTerm = searchInput.value;
     // get radio check boxes
     var sortBy = document.querySelector('input[class="sort"]:checked').value;
@@ -170,26 +173,54 @@ searchForm.addEventListener('submit', function (e) {
     var searchLimit = document.getElementById('limit').value;
 
     // check search field is not empty
+    var errMsg = 'Please add search term!';
+    var errMsgClass = 'alert-messages';
     if (searchTerm === "") {
-
-        showMessage('Please add search term!', 'alert-messages');
+        showErrorMessage(errMsg, errMsgClass);
+    } else {
+        errorStatus = false;
     }
 
     // clear search input
     searchInput.value = "";
     e.preventDefault();
-    // search Reddit using Reddit API, separate JS file
-    // returns a promise (code in written in redditapi.js) so use .then() to get the data
-    _redditapi2.default.search(searchTerm, searchLimit, sortBy).then(function (res) {
-        return console.log(res);
-    });
+
+    // error status is false (no errors) then run search functionality: 
+    if (errorStatus == false) {
+
+        // search Reddit using Reddit API, separate JS file
+
+        // returns a promise (code in written in redditapi.js) so use .then() to get the data
+        _redditapi2.default.search(searchTerm, searchLimit, sortBy).then(function (res) {
+            console.log(res);
+            var output = '';
+            var resultArea = document.getElementById('result');
+            // loop through posts 
+            res.forEach(function (post) {
+                //let description = post.selftext.splice(15, post.selftext.length);
+                console.log(post.selftext.length);
+                var description = post.selftext;
+                //console.log(description);
+                output += '\n                <div class="result-wrap">\n                    <div class="title">' + cutText(post.title, 50) + ' ..</div>\n                    <div class="output">' + cutText(post.selftext, 100) + '</div>\n                </div>\n                ';
+            });
+
+            // hide any previous errors
+            var errMsgArea = document.querySelector('.' + errMsgClass);
+            if (errMsgArea != null) {
+                errMsgArea.classList.remove(errMsgClass);
+            }
+
+            // show results 
+            resultArea.classList.add('show'); // highlight output area
+            resultArea.innerHTML = output; // add finalized search results 
+        });
+    }
 
     // testing
     // console.log();
 });
 
-function showMessage(message, className) {
-
+function showErrorMessage(message, className) {
     // create div to hold message 
     var div = document.createElement('div');
 
@@ -206,8 +237,19 @@ function showMessage(message, className) {
     // append error message into div
     errorOutput.appendChild(div);
     errorOutput.classList.add(className);
+    // notify error is true so do not show results
+    errorStatus = true;
 }
-},{"./redditapi":7}],13:[function(require,module,exports) {
+
+// cuts text down into smaller parts 
+
+function cutText(text, limit) {
+    var trimmed = text.indexOf(' ', limit); // trims at the point "limit" 
+    if (trimmed == -1) return text; // if indexOf not found it returns -1
+
+    return text.substring(0, trimmed);
+}
+},{"./redditapi":4}],13:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -236,7 +278,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49159' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '55143' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
