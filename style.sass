@@ -40,7 +40,6 @@ $main-border: #aaa69d 1px solid
     #search-form
       min-height: 350px
       width: $form-width
-      min-width: 500px
       background-color: $color-theme
       display: flex
       flex-direction: column
@@ -109,6 +108,7 @@ $main-border: #aaa69d 1px solid
     position: absolute
     top: 70vh
     display: none
+    animation: res-area 5 00ms ease-in-out forwards 
 
     &.show 
       border: #aaa69d 3px solid 
@@ -132,7 +132,8 @@ $main-border: #aaa69d 1px solid
       margin-top: 38px
       display: inline-block
       animation: res-output 700ms ease-in forwards // animate results onto UI
-      
+      padding: 0.4em 0.4em
+
       .title
         font-size: 15px
         width: 200px
@@ -197,11 +198,19 @@ $main-border: #aaa69d 1px solid
 
 /* Animations */
 
+@keyframes res-area 
+  0% 
+    transform: translateY(-250px)
+  100%
+    transform: translateY(0px)
+
+
 @keyframes res-output
   0%
     transform: translateX(-1000px)
   100%
     transform: translateX(0px)
+
 
 
 /* Responsive Design */
@@ -215,5 +224,14 @@ $main-border: #aaa69d 1px solid
   // center title and resize
   #main-app #site-title h1 
     font-size: 25px
+
+  $width: 400px
+  $search-width: 0.8*$width
+  #main-app #search-modal #search-form
+    width: $width
+
+    .drop-down, .search-input, .search-btn
+      width: $search-width  
+
 
   
