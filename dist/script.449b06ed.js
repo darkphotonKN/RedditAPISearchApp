@@ -195,16 +195,27 @@ searchForm.addEventListener('submit', function (e) {
 
         // returns a promise (code in written in redditapi.js) so use .then() to get the data
         _redditapi2.default.search(searchTerm, searchLimit, sortBy).then(function (res) {
-
+            console.log(res);
             var output = '<div id="results-title">Results</div>'; // initial output title for DOM before adding query results below
 
             // loop through posts 
             res.forEach(function (post) {
-                //let description = post.selftext.splice(15, post.selftext.length);
-                console.log(post.selftext.length);
-                var description = post.selftext;
-                //console.log(description);
-                output += '\n                <div class="result-wrap">\n                    <div class="title">' + cutText(post.title, 50) + ' ..</div>\n                    <div class="output">' + cutText(post.selftext, 100) + ' ..</div>\n                </div>\n                ';
+                var searchURL = post.url;
+
+                // get image from reddit api
+                var imageURL = '';
+                if (post.preview != undefined) {
+                    if (post.preview.images[0].source.url != undefined) {
+                        imageURL = post.preview.images[0].source.url;
+                    } else {
+                        imageURL = 'https://jsdeveloper.io/wp-content/uploads/2017/10/1024px-Reddit_logo_and_wordmark.svg_.png';
+                    }
+                } else {
+                    imageURL = 'https://jsdeveloper.io/wp-content/uploads/2017/10/1024px-Reddit_logo_and_wordmark.svg_.png';
+                }
+
+                // create output layout
+                output += '\n                \n                <div class="result-wrap">\n                    <div id="image-wrap"> <img class="image" src="' + imageURL + '"> </div>\n                    <div class="title">' + cutText(post.title, 50) + ' ..</div>\n                    <div class="output">' + cutText(post.selftext, 200) + ' .. <a href="' + searchURL + '">Read More</a></div>\n                    \n                </div>\n                ';
             });
 
             // hide any previous errors
@@ -223,6 +234,7 @@ searchForm.addEventListener('submit', function (e) {
     // console.log();
 });
 
+// function to show error message if user has not put any search terms
 function showErrorMessage(message, className) {
     // remove current results if there are any 
     resultArea.classList.remove('show');
@@ -255,7 +267,7 @@ function cutText(text, limit) {
 
     return text.substring(0, trimmed);
 }
-},{"./redditapi":5}],7:[function(require,module,exports) {
+},{"./redditapi":5}],19:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -425,5 +437,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[7,3], null)
+},{}]},{},[19,3], null)
 //# sourceMappingURL=/script.449b06ed.map

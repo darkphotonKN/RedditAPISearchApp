@@ -108,7 +108,7 @@ $main-border: #aaa69d 1px solid
     position: absolute
     top: 70vh
     display: none
-    animation: res-area 5 00ms ease-in-out forwards 
+    animation: res-area 350ms ease-in-out forwards 
 
     &.show 
       border: #aaa69d 3px solid 
@@ -133,6 +133,20 @@ $main-border: #aaa69d 1px solid
       display: inline-block
       animation: res-output 700ms ease-in forwards // animate results onto UI
       padding: 0.4em 0.4em
+      background-color: #d1ccc0
+      border: black 1px solid
+      border-radius: 4px
+          
+      #image-wrap
+        width: 100%
+        display: flex
+        align-items: center 
+        justify-content: center
+        
+        .image
+          width: 220px
+          height: 160px
+
 
       .title
         font-size: 15px
@@ -145,12 +159,11 @@ $main-border: #aaa69d 1px solid
       .output
         margin: 3px 50px
         font-size: 15px
-        min-height: 80px
-        width: 200px
-        background-color: $color-theme
-        border-radius: 4px
+        min-height: 120px
+        width: 300px
         padding: 0.4em 0.4em
-             
+        background-color: $color-theme
+        border-radius: 4px               
 
   #errors
     display: none
@@ -196,11 +209,15 @@ $main-border: #aaa69d 1px solid
       border: #487eb0 2px solid 
 
 
+a 
+  text-decoration: none
+
+
 /* Animations */
 
 @keyframes res-area 
   0% 
-    transform: translateY(-250px)
+    transform: translateY(250px)
   100%
     transform: translateY(0px)
 

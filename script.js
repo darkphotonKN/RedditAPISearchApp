@@ -33,7 +33,6 @@ searchForm.addEventListener('submit', (e) => {
     searchInput.value = "";
     e.preventDefault();
 
-
     // error status is false (no errors) then run search functionality: 
     if(errorStatus==false) {
 
@@ -42,19 +41,33 @@ searchForm.addEventListener('submit', (e) => {
         // returns a promise (code in written in redditapi.js) so use .then() to get the data
         reddit.search(searchTerm, searchLimit, sortBy).then
         (res => {
-        
+            console.log(res);
             let output = '<div id="results-title">Results</div>'; // initial output title for DOM before adding query results below
             
             // loop through posts 
             res.forEach(post => {
-                //let description = post.selftext.splice(15, post.selftext.length);
-                console.log(post.selftext.length);
-                let description = post.selftext;
-                //console.log(description);
+                const searchURL = post.url;
+
+                // get image from reddit api
+                let imageURL = '';
+                if(post.preview != undefined) {  
+                    if(post.preview.images[0].source.url != undefined) {
+                        imageURL = post.preview.images[0].source.url;
+                    } else {
+                        imageURL = 'https://jsdeveloper.io/wp-content/uploads/2017/10/1024px-Reddit_logo_and_wordmark.svg_.png';
+                    }
+                } else {
+                    imageURL = 'https://jsdeveloper.io/wp-content/uploads/2017/10/1024px-Reddit_logo_and_wordmark.svg_.png';
+                }
+                
+                // create output layout
                 output += `
+                
                 <div class="result-wrap">
+                    <div id="image-wrap"> <img class="image" src="${imageURL}"> </div>
                     <div class="title">${cutText(post.title, 50)} ..</div>
-                    <div class="output">${cutText(post.selftext, 100)} ..</div>
+                    <div class="output">${cutText(post.selftext, 200)} .. <a href="${searchURL}">Read More</a></div>
+                    
                 </div>
                 `;
             });
@@ -78,6 +91,7 @@ searchForm.addEventListener('submit', (e) => {
 });
 
 
+// function to show error message if user has not put any search terms
 function showErrorMessage(message, className) {
     // remove current results if there are any 
     resultArea.classList.remove('show');
