@@ -83,13 +83,25 @@
     min-height: 200px;
     position: absolute;
     top: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap; }
+    display: none; }
     #main-app #result.show {
-      border: #aaa69d 3px solid; }
+      border: #aaa69d 3px solid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap; }
+    #main-app #result #results-title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding-left: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      width: 100%;
+      height: 35px;
+      background-color: #aaa69d; }
     #main-app #result .result-wrap {
+      margin-top: 38px;
       display: inline-block;
       animation: res-output 700ms ease-in forwards; }
       #main-app #result .result-wrap .title {

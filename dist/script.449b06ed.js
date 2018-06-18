@@ -156,9 +156,12 @@ var _redditapi2 = _interopRequireDefault(_redditapi);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// primary global variables 
 var searchForm = document.getElementById('search-form'); // js file using reddit api
 
 var searchInput = document.querySelector('.search-input');
+var resultArea = document.getElementById('result');
+
 // error status 
 var errorStatus = false;
 
@@ -192,16 +195,16 @@ searchForm.addEventListener('submit', function (e) {
 
         // returns a promise (code in written in redditapi.js) so use .then() to get the data
         _redditapi2.default.search(searchTerm, searchLimit, sortBy).then(function (res) {
-            console.log(res);
-            var output = '';
-            var resultArea = document.getElementById('result');
+
+            var output = '<div id="results-title">Results</div>'; // initial output title for DOM before adding query results below
+
             // loop through posts 
             res.forEach(function (post) {
                 //let description = post.selftext.splice(15, post.selftext.length);
                 console.log(post.selftext.length);
                 var description = post.selftext;
                 //console.log(description);
-                output += '\n                <div class="result-wrap">\n                    <div class="title">' + cutText(post.title, 50) + ' ..</div>\n                    <div class="output">' + cutText(post.selftext, 100) + '</div>\n                </div>\n                ';
+                output += '\n                <div class="result-wrap">\n                    <div class="title">' + cutText(post.title, 50) + ' ..</div>\n                    <div class="output">' + cutText(post.selftext, 100) + ' ..</div>\n                </div>\n                ';
             });
 
             // hide any previous errors
@@ -221,6 +224,9 @@ searchForm.addEventListener('submit', function (e) {
 });
 
 function showErrorMessage(message, className) {
+    // remove current results if there are any 
+    resultArea.classList.remove('show');
+
     // create div to hold message 
     var div = document.createElement('div');
 
@@ -249,7 +255,7 @@ function cutText(text, limit) {
 
     return text.substring(0, trimmed);
 }
-},{"./redditapi":4}],13:[function(require,module,exports) {
+},{"./redditapi":4}],16:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -419,5 +425,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[13,3], null)
+},{}]},{},[16,3], null)
 //# sourceMappingURL=/script.449b06ed.map

@@ -1,9 +1,11 @@
 // js file using reddit api
 import reddit from './redditapi';
 
-
+// primary global variables 
 const searchForm = document.getElementById('search-form');
 const searchInput = document.querySelector('.search-input');
+const resultArea = document.getElementById('result');
+
 // error status 
 let errorStatus = false;
 
@@ -40,9 +42,9 @@ searchForm.addEventListener('submit', (e) => {
         // returns a promise (code in written in redditapi.js) so use .then() to get the data
         reddit.search(searchTerm, searchLimit, sortBy).then
         (res => {
-            console.log(res);
-            let output = '';
-            let resultArea = document.getElementById('result');
+        
+            let output = '<div id="results-title">Results</div>'; // initial output title for DOM before adding query results below
+            
             // loop through posts 
             res.forEach(post => {
                 //let description = post.selftext.splice(15, post.selftext.length);
@@ -52,7 +54,7 @@ searchForm.addEventListener('submit', (e) => {
                 output += `
                 <div class="result-wrap">
                     <div class="title">${cutText(post.title, 50)} ..</div>
-                    <div class="output">${cutText(post.selftext, 100)}</div>
+                    <div class="output">${cutText(post.selftext, 100)} ..</div>
                 </div>
                 `;
             });
@@ -77,6 +79,10 @@ searchForm.addEventListener('submit', (e) => {
 
 
 function showErrorMessage(message, className) {
+    // remove current results if there are any 
+    resultArea.classList.remove('show');
+    
+
     // create div to hold message 
     const div = document.createElement('div');
     
