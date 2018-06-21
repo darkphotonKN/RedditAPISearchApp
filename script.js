@@ -36,7 +36,7 @@ searchForm.addEventListener('submit', (e) => {
     // error status is false (no errors) then run search functionality: 
     if(errorStatus==false) {
 
-    // search Reddit using Reddit API, separate JS file
+    // search Reddit u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            sing Reddit API, separate JS file
 
         // returns a promise (code in written in redditapi.js) so use .then() to get the data
         reddit.search(searchTerm, searchLimit, sortBy).then
@@ -44,7 +44,7 @@ searchForm.addEventListener('submit', (e) => {
             console.log(res);
             let output = '<div id="results-title">Results</div>'; // initial output title for DOM before adding query results below
             
-            // loop through posts 
+    // loop through posts 
             res.forEach(post => {
                 const searchURL = post.url;
 
@@ -64,8 +64,8 @@ searchForm.addEventListener('submit', (e) => {
                 output += `
                 
                 <div class="result-wrap">
-                    <div id="image-wrap"> <img class="image" src="${imageURL}"> </div>
                     <div class="title">${cutText(post.title, 50)} ..</div>
+                    <div id="image-wrap"> <img class="image" src="${imageURL}"> </div>
                     <div class="output">${cutText(post.selftext, 200)} .. <a href="${searchURL}">Read More</a></div>
                     
                 </div>
@@ -82,6 +82,8 @@ searchForm.addEventListener('submit', (e) => {
             resultArea.classList.add('show'); // highlight output area
             resultArea.innerHTML = output; // add finalized search results 
         });
+
+    
 
     
     }

@@ -98,7 +98,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({5:[function(require,module,exports) {
+})({4:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -191,7 +191,7 @@ searchForm.addEventListener('submit', function (e) {
     // error status is false (no errors) then run search functionality: 
     if (errorStatus == false) {
 
-        // search Reddit using Reddit API, separate JS file
+        // search Reddit u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            sing Reddit API, separate JS file
 
         // returns a promise (code in written in redditapi.js) so use .then() to get the data
         _redditapi2.default.search(searchTerm, searchLimit, sortBy).then(function (res) {
@@ -215,7 +215,7 @@ searchForm.addEventListener('submit', function (e) {
                 }
 
                 // create output layout
-                output += '\n                \n                <div class="result-wrap">\n                    <div id="image-wrap"> <img class="image" src="' + imageURL + '"> </div>\n                    <div class="title">' + cutText(post.title, 50) + ' ..</div>\n                    <div class="output">' + cutText(post.selftext, 200) + ' .. <a href="' + searchURL + '">Read More</a></div>\n                    \n                </div>\n                ';
+                output += '\n                \n                <div class="result-wrap">\n                    <div class="title">' + cutText(post.title, 50) + ' ..</div>\n                    <div id="image-wrap"> <img class="image" src="' + imageURL + '"> </div>\n                    <div class="output">' + cutText(post.selftext, 200) + ' .. <a href="' + searchURL + '">Read More</a></div>\n                    \n                </div>\n                ';
             });
 
             // hide any previous errors
@@ -267,7 +267,7 @@ function cutText(text, limit) {
 
     return text.substring(0, trimmed);
 }
-},{"./redditapi":5}],19:[function(require,module,exports) {
+},{"./redditapi":4}],7:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -296,7 +296,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '51856' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '57912' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -437,5 +437,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[19,3], null)
+},{}]},{},[7,3], null)
 //# sourceMappingURL=/script.449b06ed.map
